@@ -108,14 +108,14 @@ public final class ClassUtil {
                 doAddClass(classSet, className);
             } else {
                 String subPackagePath = fileName;
-                if (StringUtils.isNotEmpty(packagePath)) {
-                    subPackagePath = packagePath + "/" + subPackagePath;
-                }
+//                if (StringUtils.isNotEmpty(packagePath)) {
+//                    subPackagePath = packagePath + "/" + subPackagePath;
+//                }
                 String subPackageName = fileName;
                 if (StringUtils.isNotEmpty(packageName)) {
                     subPackageName = packageName + "." + subPackageName;
                 }
-                addClass(classSet, subPackagePath, subPackageName);
+                addClass(classSet, file.getAbsolutePath(), subPackageName);
             }
         }
     }
