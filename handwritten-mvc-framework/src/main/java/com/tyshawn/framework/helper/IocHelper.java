@@ -36,8 +36,10 @@ public final class IocHelper {
                         if (beanField.isAnnotationPresent(Autowired.class)) {
                             //属性类型
                             Class<?> beanFieldClass = beanField.getType();
-                            //如果beanFieldClass是接口, 就获取接口对应的实现类
-                            beanFieldClass = findImplementClass(beanFieldClass);
+                            if(beanFieldClass.isInterface()){
+                                //如果beanFieldClass是接口, 就获取接口对应的实现类,默认取第一个实现类
+                                beanFieldClass = findImplementClass(beanFieldClass);
+                            }
                             //获取Class类对应的实例
                             Object beanFieldInstance = beanMap.get(beanFieldClass);
                             if (beanFieldInstance != null) {

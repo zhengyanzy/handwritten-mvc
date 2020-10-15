@@ -15,6 +15,9 @@ import java.util.*;
 
 /**
  * 切面编程助手类
+ * 需求：创建代理对象。需要目标类和切面类
+ * 1、从切面类中找到目标类。做切面类和目标类的映射，在做目标类和代理类的映射【一个目标类可能被多个切面类切面】
+ * 2、创建代理对象。在invoke方法中，执行所有的切面类方法（指定的方法后），在执行目标方法。我们可以用一个工具类帮（ProxyChain）我们实现这些操作
  */
 public final class AopHelper {
 
@@ -44,7 +47,9 @@ public final class AopHelper {
      */
     private static Map<Class<?>, Set<Class<?>>> createAspectMap() throws Exception {
         Map<Class<?>, Set<Class<?>>> aspectMap = new HashMap<Class<?>, Set<Class<?>>>();
+        //实现AspectProxy抽象类的类【EfficientAspect】  切面  Aspect注解指定的目标类
         addAspectProxy(aspectMap);
+        //TransactionProxy类  切面 所有@Service注解的类
         addTransactionProxy(aspectMap);
         return aspectMap;
     }

@@ -1,6 +1,7 @@
 package com.tyshawn.framework.helper;
 
 import com.tyshawn.framework.annotation.RequestMapping;
+import com.tyshawn.framework.annotation.RequestMethod;
 import com.tyshawn.framework.bean.Handler;
 import com.tyshawn.framework.bean.Request;
 import org.apache.commons.collections4.CollectionUtils;
@@ -39,7 +40,6 @@ public final class ControllerHelper {
                             String requestPath = requestMapping.value();
                             //请求方法
                             String requestMethod = requestMapping.method().name();
-
                             //封装请求和处理器
                             Request request = new Request(requestMethod, requestPath);
                             Handler handler = new Handler(controllerClass, method);

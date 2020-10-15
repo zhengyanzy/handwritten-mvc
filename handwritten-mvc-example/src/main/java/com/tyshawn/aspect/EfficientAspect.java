@@ -17,7 +17,7 @@ public class EfficientAspect extends AspectProxy {
     private long begin;
 
     /**
-     * 切入点判断
+     * 切入点判断，重新了方法表示，为UserController指定的的方法进行代理，否则全部代理
      */
     @Override
     public boolean intercept(Method method, Object[] params) throws Throwable {

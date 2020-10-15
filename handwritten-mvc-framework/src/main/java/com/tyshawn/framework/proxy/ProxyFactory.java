@@ -23,6 +23,7 @@ public class ProxyFactory {
              */
             @Override
             public Object intercept(Object targetObject, Method targetMethod, Object[] methodParams, MethodProxy methodProxy) throws Throwable {
+                System.out.println("ProxyFactory.intercept");
                 return new ProxyChain(targetClass, targetObject, targetMethod, methodProxy, methodParams, proxyList).doProxyChain();
             }
         });
